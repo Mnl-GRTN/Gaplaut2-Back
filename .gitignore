@@ -6,3 +6,6 @@ build
 
 # Ignore bin directory
 app/bin
+
+#Ignore application.yaml directory
+app/src/main/resources

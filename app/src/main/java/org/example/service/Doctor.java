@@ -2,7 +2,6 @@ package org.example.service;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.ForeignKey;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 
@@ -14,17 +13,18 @@ public class Doctor {
     private String lastName;
     private String firstName;
     
-    //@ManyToOne
-    //@JoinColumn(name = "centre_id", referencedColumnName = "id")
-    private Integer centreId;
+    //name = "Classname_FKattributname", referencedColumName = "nameofcolumnInBDD"
+    @ManyToOne
+    @JoinColumn(name = "centre_id", referencedColumnName = "id")
+    private Centre centre;
 
     public Doctor(){}
 
-    public Doctor(Integer id, String lastName ,String firstName, Integer centreId){
+    public Doctor(Integer id, String lastName ,String firstName, Centre centre){
         this.id = id;
         this.lastName=lastName;
         this.firstName = firstName;
-        this.centreId = centreId;
+        this.centre = centre;
     }
 
     public Integer getId() {
@@ -51,12 +51,12 @@ public class Doctor {
         this.firstName = firstName;
     }
 
-    public Integer getCentre() {
-        return centreId;
+    public Centre getCentre() {
+        return centre;
     }
 
-    public void setCentre(Integer centre) {
-        this.centreId = centreId;
+    public void setCentre(Centre centre) {
+        this.centre = centre;
     }
 
 }
