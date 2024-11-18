@@ -1,25 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { VaccinationCenter } from '../vaccination-center';
 import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-vaccination-center',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, NgIf],
   templateUrl: './vaccination-center.component.html',
   styleUrl: './vaccination-center.component.scss'
 })
 
 export class VaccinationCenterComponent {
+
+  @Input() center?: VaccinationCenter;
+
+  @Output() deleted = new EventEmitter<VaccinationCenter>();
+
   clearName() {
-      this.center.name = '';
+      this.center!.name = '';
   }
 
-  center: VaccinationCenter = {
-    id: 2,
-    name: 'Messehalle 1',
-    address: 'Messeplatz 1',
-    postalCode: '20357',
-    city: 'Hamburg'
-  };
+  delete(){
+    this.deleted.emit(this.center);
+  }
 }

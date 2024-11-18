@@ -4,5 +4,6 @@ export interface VaccinationCenter {
     address: string;
     postalCode: string;
     city: string;
+    openingDate: Date;
 }
 

@@ -1,0 +1,15 @@
+<ul>
+    <li *ngFor="let aCenter of centers">
+        <button [ngClass]="aCenter==selectedCenter ? 'selected' : ''"
+        (click)="select(aCenter)">{{aCenter.name}}</button>
+    </li>
+
+    <div *ngIf="selectedCenter">
+        <h1>Centre selectionné : {{selectedCenter.name}}</h1>
+        <h1>Ouvert le : {{selectedCenter.openingDate | date: 'dd/MM/yyyy'}}</h1>
+    </div>
+
+    <app-vaccination-center [center]="selectedCenter"
+    (deleted)="onDeleted($event)"></app-vaccination-center>
+
+</ul>
