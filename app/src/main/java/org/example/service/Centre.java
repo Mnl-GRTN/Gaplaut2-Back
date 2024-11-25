@@ -27,11 +27,11 @@ public class Centre {
         this.id = id;
     }
 
-    public String getCentre_name() {
+    public String getCentreName() {
         return centreName;
     }
 
-    public void setCentre_name(String centreName) {
+    public void setCentreName(String centreName) {
         this.centreName = centreName;
     }
 
