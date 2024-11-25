@@ -3,11 +3,12 @@ import { VaccinationCenter } from '../vaccination-center';
 import { NgClass, NgFor, NgIf, DatePipe, UpperCasePipe } from '@angular/common';
 import { VaccinationCenterComponent } from "../vaccination-center/vaccination-center.component";
 import { VaccinationService } from '../vaccination.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-vaccination-center-list',
   standalone: true,
-  imports: [NgFor, NgIf, NgClass, DatePipe, UpperCasePipe, VaccinationCenterComponent],
+  imports: [NgFor, NgIf, NgClass, DatePipe, UpperCasePipe, VaccinationCenterComponent, RouterLink],
   templateUrl: './vaccination-center-list.component.html',
   styleUrl: './vaccination-center-list.component.scss'
 })

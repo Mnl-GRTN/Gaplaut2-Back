@@ -7,9 +7,8 @@
     <div *ngIf="selectedCenter">
         <h1>Centre selectionné : {{selectedCenter.name}}</h1>
         <h1>Ouvert le : {{selectedCenter.openingDate | date: 'dd/MM/yyyy'}}</h1>
+        <a routerLink = "/centers/detail/{{selectedCenter.id}}">Choisir le centre {{selectedCenter.name}}</a>
+        <!-- <app-vaccination-center [center]="selectedCenter" (deleted)="onDeleted($event)"></app-vaccination-center> -->
     </div>
-
-    <app-vaccination-center [center]="selectedCenter"
-    (deleted)="onDeleted($event)"></app-vaccination-center>
 
 </ul>

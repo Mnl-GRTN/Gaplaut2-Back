@@ -45,5 +45,8 @@ export class VaccinationService {
   getAllVaccinationCenter(): VaccinationCenter[] {
     return this.CENTERS;
   }
-  
+
+  getCenterById(id: number): VaccinationCenter {
+    return this.CENTERS.find(center => center.id === id)!;
+  }
 }
