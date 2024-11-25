@@ -13,4 +13,12 @@ public class CentreService {
     public void create(Centre c){
         centreRepository.save(c);
     }
+
+    public Iterable<Centre> readAll(){
+        return centreRepository.findAll();
+    }
+
+    public Centre readOne(int id){
+        return centreRepository.findById(id).get();
+    }
 }

@@ -1,35 +1,36 @@
-POST http://localhost:8080/centres
+POST http://localhost:8080/api/centres
 Content-Type: application/json
 
 {
-    "id": 1,
+    "id": 3,
     "centreName": "El Grando Centrissimo",
-    "city": "Marseille"
+    "city": "3"
 }
 
 ###
+GET http://localhost:8080/api/centres
 
-POST http://localhost:8080/doctors
+###
+GET http://localhost:8080/api/centre/3
+
+
+
+
+###
+POST http://localhost:8080/api/doctors
 Content-Type: application/json
 
 {
-    "id": 1,
-    "lastName": "GERMAIN",
-    "firstName": "Stéphane",
+    "id": 2,
+    "lastName": "PLAUT",
+    "firstName": "Tristan",
     "centre": {
         "id": 1
     }
 }
 
 ###
-POST http://localhost:8080/doctors
-Content-Type: application/json
+GET http://localhost:8080/api/doctors
 
-{
-    "id": 2,
-    "lastName": "SAVOY",
-    "firstName": "Delphine",
-    "centre": {
-        "id": 2
-    }
-}
+###
+GET http://localhost:8080/api/doctor/2

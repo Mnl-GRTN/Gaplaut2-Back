@@ -19,4 +19,12 @@ public class DoctorService {
         doctorRepository.save(p); //Implemented by JpaRepository
     }
 
+    public Iterable<Doctor> readAll(){
+        return doctorRepository.findAll();
+    }
+
+    public Doctor readOne(int id){
+        return doctorRepository.findById(id).get();
+    }
+
 }

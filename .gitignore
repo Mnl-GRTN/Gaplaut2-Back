@@ -9,3 +9,7 @@ app/bin
 
 #Ignore application.yaml directory
 app/src/main/resources
+
+# Ignore personal configuration file
+app/build.gradle
+app/src/main/resources/application.yaml
