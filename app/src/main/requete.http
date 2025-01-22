@@ -2,16 +2,16 @@ POST http://localhost:8080/api/centres
 Content-Type: application/json
 
 {
-    "id": 3,
-    "centreName": "El Grando Centrissimo",
-    "city": "3"
+    "id": 5,
+    "centreName": "El Grando Centrissimo Cinque",
+    "city": "City 5"
 }
 
 ###
 GET http://localhost:8080/api/centres
 
 ###
-GET http://localhost:8080/api/centre/3
+GET http://localhost:8080/api/centre/5
 
 
 
@@ -21,9 +21,9 @@ POST http://localhost:8080/api/doctors
 Content-Type: application/json
 
 {
-    "id": 2,
-    "lastName": "PLAUT",
-    "firstName": "Tristan",
+    "id": 3,
+    "lastName": "Garattoni",
+    "firstName": "Manoel",
     "centre": {
         "id": 1
     }
