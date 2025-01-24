@@ -22,7 +22,7 @@ Here is the database schema of the application based on the instructions given i
     - Firstname
     - Email
     - Password
-    - CenterID
+    - CenterId
 
 #### Booking
     - ID
@@ -30,6 +30,7 @@ Here is the database schema of the application based on the instructions given i
     - Firstname
     - Email
     - Date
+    - CenterId
     - IsVaccinated
 
 ## Instructions of the assignment
