@@ -30,6 +30,7 @@ Here is the database schema of the application based on the instructions given i
     - Firstname
     - Email
     - Date
+    - IsVaccinated
 
 ## Instructions of the assignment
 
