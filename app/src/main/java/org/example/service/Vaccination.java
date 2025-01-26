@@ -1,6 +1,8 @@
 package org.example.service;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,7 +26,9 @@ public class Vaccination {
     private String phoneNumber;
     private String last_name;
     private String first_name;
-    private LocalDateTime date;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate date; // Changer en LocalDateTime quand on aura des heures de vaccinations
     private Boolean isVaccined;
     
     public Integer getId() {
@@ -63,10 +67,10 @@ public class Vaccination {
     public void setFirst_name(String first_name) {
         this.first_name = first_name;
     }
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
     public Boolean getIsVaccined() {

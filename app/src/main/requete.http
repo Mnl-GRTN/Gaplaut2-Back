@@ -58,3 +58,24 @@ GET http://localhost:8080/api/doctors
 
 ###
 GET http://localhost:8080/api/doctor/2
+
+### Vaccination
+    # private String mail;
+    # private String phoneNumber;
+    # private String last_name;
+    # private String first_name;
+    # private LocalDateTime date;
+###
+
+POST http://localhost:8080/api/vaccinations
+Content-Type: application/json
+
+{
+    
+    "mail": "gagou@gmail.com",
+    "phoneNumber": "0606060606",
+    "last_name": "Gagou",
+    "first_name": "Gagou",
+    "date": "2021-12-12T12:12:12"
+}
+
