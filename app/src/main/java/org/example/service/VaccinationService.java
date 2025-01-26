@@ -7,23 +7,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class VaccinationService {
 
-    //The service layer abstracts and encapsulates the business operations,
-    //such as validations, complex operations, or transactions.
-
-    //Acts between DoctorRestController and DoctorRepository
-
     @Autowired
     private VaccinationRepository vaccinationRepository;
 
-    public void create(Doctor p){
+    public void create(Vaccination p){
         vaccinationRepository.save(p); //Implemented by JpaRepository
     }
 
-    public Iterable<Doctor> readAll(){
+    public Iterable<Vaccination> readAll(){
         return vaccinationRepository.findAll();
     }
 
-    public Doctor readOne(int id){
+    public Vaccination readOne(int id){
         return vaccinationRepository.findById(id).get();
     }
 

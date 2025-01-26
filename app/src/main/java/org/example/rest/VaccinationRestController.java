@@ -1,7 +1,7 @@
 package org.example.rest;
 
+import org.example.service.Vaccination;
 import org.example.service.VaccinationService;
-import org.example.service.Doctor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,18 +21,18 @@ public class VaccinationRestController {
     @Autowired
     private VaccinationService service;
 
-    @PostMapping(path = "/api/vaccination")
-    public void create(@RequestBody Doctor p) throws URISyntaxException{
+    @PostMapping(path = "/api/vaccinations")
+    public void create(@RequestBody Vaccination p) throws URISyntaxException{
         service.create(p);
     }
 
     @GetMapping(path = "/api/vaccinations")
-    public Iterable<Doctor> read(){
+    public Iterable<Vaccination> read(){
         return service.readAll();
     }
 
     @GetMapping(path = "/api/vaccination/{id}")
-    public Doctor readOne(@PathVariable("id") int id){
+    public Vaccination readOne(@PathVariable("id") int id){
         return service.readOne(id);
     }
 
