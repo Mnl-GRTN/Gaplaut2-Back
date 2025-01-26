@@ -3,7 +3,9 @@ Content-Type: application/json
 
 {
     "centreName": "El Grando Centrissimo Cinque",
-    "city": "City 5"
+    "city": "City 5",
+    "address": "5 rue de la 5ème ville",
+    "postalCode": "55555"
 }
 
 ###
@@ -12,7 +14,9 @@ Content-Type: application/json
 
 {
     "centreName": "Centre de la vie",
-    "city": "City Kratos"
+    "city": "City Kratos",
+    "address": "Rue de la vie",
+    "postalCode": "00000"
 }
 
 ###
