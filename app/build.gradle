@@ -18,7 +18,8 @@ repositories {
 dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation libs.junit.jupiter
-
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.2.4'
+    
     implementation 'org.springframework.boot:spring-boot-starter-web:3.2.4'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.2.4'
     implementation 'javax.xml.bind:jaxb-api:2.3.1'

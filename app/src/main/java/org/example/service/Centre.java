@@ -45,4 +45,8 @@ public class Centre {
     public void setCity(String city) {
         this.city = city;
     }
+
+    public boolean isEqualTo(Centre c){
+        return this.id == c.id && this.centreName.equals(c.centreName) && this.city.equals(c.city);
+    }
 }
