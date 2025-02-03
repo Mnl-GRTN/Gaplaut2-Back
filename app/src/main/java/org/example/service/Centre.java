@@ -13,13 +13,25 @@ public class Centre {
     private Integer id;
     private String centreName;
     private String city;
+    private String address;
+    private String postalCode;
     
     public Centre(){}
 
-    public Centre(Integer id, String centreName,String city){
+    public Centre(Integer id, String centreName,String city, String address, String postalCode) {
         this.id = id;
         this.centreName = centreName;
         this.city = city;
+        this.address = address;
+        this.postalCode = postalCode;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     public Integer getId() {
@@ -44,6 +56,14 @@ public class Centre {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public boolean isEqualTo(Centre c){

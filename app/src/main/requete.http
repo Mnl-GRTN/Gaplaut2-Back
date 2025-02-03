@@ -3,7 +3,9 @@ Content-Type: application/json
 
 {
     "centreName": "El Grando Centrissimo Cinque",
-    "city": "City 5"
+    "city": "City 5",
+    "address": "5 rue de la 5ème ville",
+    "postalCode": "55555"
 }
 
 ###
@@ -12,7 +14,9 @@ Content-Type: application/json
 
 {
     "centreName": "Centre de la vie",
-    "city": "City Kratos"
+    "city": "City Kratos",
+    "address": "Rue de la vie",
+    "postalCode": "00000"
 }
 
 ###
@@ -54,3 +58,24 @@ GET http://localhost:8080/api/doctors
 
 ###
 GET http://localhost:8080/api/doctor/2
+
+### Vaccination
+    # private String mail;
+    # private String phoneNumber;
+    # private String last_name;
+    # private String first_name;
+    # private LocalDateTime date;
+###
+
+POST http://localhost:8080/api/vaccinations
+Content-Type: application/json
+
+{
+    
+    "mail": "gagou@gmail.com",
+    "phoneNumber": "0606060606",
+    "last_name": "Gagou",
+    "first_name": "Gagou",
+    "date": "2021-12-12T12:12:12"
+}
+
