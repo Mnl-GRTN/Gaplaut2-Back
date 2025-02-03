@@ -62,4 +62,7 @@ public class Doctor {
         this.centre = centre;
     }
 
+    public boolean isEqualTo(Doctor d){
+        return this.id == d.id && this.centre.equals(d.centre) && this.firstName.equals(d.firstName) && this.lastName.equals(d.lastName);
+    }
 }

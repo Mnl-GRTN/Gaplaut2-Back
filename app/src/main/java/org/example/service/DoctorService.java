@@ -15,6 +15,10 @@ public class DoctorService {
     @Autowired
     private DoctorRepository doctorRepository;
 
+    public DoctorService(DoctorRepository doctorRepository) {
+        this.doctorRepository = doctorRepository;
+    }
+
     public void create(Doctor p){
         doctorRepository.save(p); //Implemented by JpaRepository
     }
