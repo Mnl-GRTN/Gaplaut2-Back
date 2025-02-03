@@ -30,6 +30,8 @@ public class Vaccination {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate date; // Changer en LocalDateTime quand on aura des heures de vaccinations
     private Boolean isVaccined;
+
+    public Vaccination() {}
     
     public Integer getId() {
         return id;
@@ -79,6 +81,8 @@ public class Vaccination {
     public void setIsVaccined(Boolean isVaccined) {
         this.isVaccined = isVaccined;
     }
-
+    public boolean isEqualTo(Vaccination v) {
+        return this.id == v.id && this.Centre == v.Centre && this.mail.equals(v.mail) && this.phoneNumber.equals(v.phoneNumber) && this.last_name.equals(v.last_name) && this.first_name.equals(v.first_name) && this.date.equals(v.date) && this.isVaccined == v.isVaccined;
+    }
     
 }
