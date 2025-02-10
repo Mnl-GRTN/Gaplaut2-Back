@@ -1,4 +1,4 @@
-POST http://localhost:8080/api/centres
+POST http://localhost:8080/public/api/centres
 Content-Type: application/json
 
 {
@@ -9,7 +9,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:8080/api/centres
+POST http://localhost:8080/public/api/centres
 Content-Type: application/json
 
 {
@@ -20,10 +20,10 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8080/api/centres
+GET http://localhost:8080/public/api/centres
 
 ###
-GET http://localhost:8080/api/centre/2
+GET http://localhost:8080/public/api/centre/2
 
 
 
