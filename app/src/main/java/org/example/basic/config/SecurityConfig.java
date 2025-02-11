@@ -16,7 +16,9 @@ public class SecurityConfig {
         public SecurityFilterChain filterChain(HttpSecurity http)
                 throws Exception {
 
-            http.authorizeHttpRequests((authz) -> authz
+            http
+                .csrf((csrf) -> csrf.disable())
+                .authorizeHttpRequests((authz) -> authz
                             .requestMatchers("/public/**").permitAll()
                             .requestMatchers("/private/**").authenticated()
                     )
@@ -25,6 +27,4 @@ public class SecurityConfig {
                     ); // On rend les session stateless
             return http.build();
     }
-
-
 }
