@@ -1,4 +1,4 @@
-package org.example.rest;
+package org.example.controller;
 
 import org.example.service.Centre;
 import org.example.service.CentreService;

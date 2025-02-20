@@ -1,4 +1,4 @@
-package org.example.rest;
+package org.example.controller;
 
 import org.example.service.Role;
 import org.example.service.RoleService;
@@ -22,7 +22,7 @@ public class RoleRestController {
         service.create(r);
     }
 
-    @GetMapping(path = "/api/roles")
+    @GetMapping(path = "private/api/roles")
     public Iterable<Role> read(){
         return service.readAll();
     }
