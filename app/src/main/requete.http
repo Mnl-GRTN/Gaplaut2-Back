@@ -25,23 +25,7 @@ GET http://localhost:8080/public/api/centres
 ###
 GET http://localhost:8080/public/api/centre/2
 
-
-
-
 ###
-POST http://localhost:8080/api/doctors
-Content-Type: application/json
-
-{
-    "lastName": "Garattoni",
-    "firstName": "Manoel",
-    "centre": {
-        "id": 1
-    }
-}
-
-###
-
 POST http://localhost:8080/api/doctors
 Content-Type: application/json
 
@@ -78,4 +62,87 @@ Content-Type: application/json
     "first_name": "Gagou",
     "date": "2021-12-12T12:12:12"
 }
+
+###public Doctor(Integer id, String lastName ,String firstName, Centre centre, String email, String password, List<Role> roles)
+POST http://localhost:8080/public/api/doctors
+Content-Type: application/json
+
+{
+    "lastName": "superadmin",
+    "firstName": "superadmin",
+    "centre": {
+        "id": 1
+    },
+    "email": "superadmin",
+    "password": "superadmin",
+    "roles": [
+        {
+            "id": 1
+        }
+    ]
+
+    
+}
+
+### Doctor Admin
+POST http://localhost:8080/public/api/doctors
+Content-Type: application/json
+
+{
+    "lastName": "admin",
+    "firstName": "admin",
+    "centre": {
+        "id": 1
+    },
+    "email": "admin",
+    "password": "admin",
+    "roles": [
+        {
+            "id": 2
+        }
+    ]
+
+    
+}
+
+### Doctor
+POST http://localhost:8080/public/api/doctors
+Content-Type: application/json
+
+{
+    "lastName": "médecin",
+    "firstName": "médecin",
+    "centre": {
+        "id": 1
+    },
+    "email": "médecin",
+    "password": "médecin",
+    "roles": [
+        {
+            "id": 3
+        }
+    ]
+
+    
+}
+
+### Basic Auth superadmin:superadmin
+GET http://localhost:8080/private/api/roles
+Content-Type: application/json
+Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
+
+### Basic Auth request with admin:admin
+GET http://localhost:8080/private/api/roles
+Content-Type: application/json
+Authorization: Basic YWRtaW46YWRtaW4=
+
+### Basic Auth request with médecin:médecin
+GET http://localhost:8080/private/api/roles
+Content-Type: application/json
+Authorization: Basic bcOpZGVjaW46bcOpZGVjaW4=
+
+### Basic Auth request with false credentials
+GET http://localhost:8080/private/api/roles
+Content-Type: application/json
+Authorization: Basic marchepas
 

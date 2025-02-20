@@ -32,15 +32,15 @@ public class RoleService {
     @PostConstruct
     public void init(){
 
-        roleRepository.deleteAll();
-
-        Role role = new Role(1,"superadmin");
-        Role role2 = new Role(2, "admin");
-        Role role3 = new Role(3,"médecin");
-
-        roleRepository.save(role);
-        roleRepository.save(role2);
-        roleRepository.save(role3);
+        if (roleRepository.count() == 0) {
+            Role role = new Role(1,"superadmin");
+            Role role2 = new Role(2, "admin");
+            Role role3 = new Role(3,"médecin");
+    
+            roleRepository.save(role);
+            roleRepository.save(role2);
+            roleRepository.save(role3);
+        }
     }
 
 }
