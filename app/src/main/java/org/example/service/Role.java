@@ -1,7 +1,10 @@
 package org.example.service;
 
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Role {
@@ -9,6 +12,9 @@ public class Role {
     @Id
     private Integer id;
     private String roleName;
+
+    @ManyToMany(mappedBy = "roles")
+    private Set<Doctor> users;
     
     public Role(){}
 
