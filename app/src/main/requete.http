@@ -20,6 +20,19 @@ Content-Type: application/json
 }
 
 ###
+
+POST http://localhost:8080/public/api/centres
+Content-Type: application/json
+
+{
+    "centreName": "Centre 1",
+    "city": "City 1",
+    "address": "1 rue de la 1ère ville",
+    "postalCode": "11111"
+}
+
+
+###
 GET http://localhost:8080/public/api/centres
 
 ###
@@ -145,4 +158,9 @@ Authorization: Basic bcOpZGVjaW46bcOpZGVjaW4=
 GET http://localhost:8080/private/api/roles
 Content-Type: application/json
 Authorization: Basic marchepas
+
+###
+GET http://localhost:8080/private/api/auth/user-info
+Content-Type: application/json
+Authorization: Basic YWRtaW46YWRtaW4=
 
