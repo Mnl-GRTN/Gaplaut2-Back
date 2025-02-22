@@ -159,7 +159,7 @@ GET http://localhost:8080/private/api/roles
 Content-Type: application/json
 Authorization: Basic marchepas
 
-###
+### Get Authenticated User Info (The role of the user is displayed)
 GET http://localhost:8080/private/api/auth/user-info
 Content-Type: application/json
 Authorization: Basic YWRtaW46YWRtaW4=
