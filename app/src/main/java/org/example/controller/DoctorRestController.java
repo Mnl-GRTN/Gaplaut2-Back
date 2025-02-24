@@ -1,4 +1,4 @@
-package org.example.rest;
+package org.example.controller;
 
 import org.example.service.DoctorService;
 import org.example.service.Doctor;
@@ -21,7 +21,7 @@ public class DoctorRestController {
     @Autowired
     private DoctorService service;
 
-    @PostMapping(path = "/api/doctors")
+    @PostMapping(path = "public/api/doctors")
     public void create(@RequestBody Doctor p) throws URISyntaxException{
         service.create(p);
     }

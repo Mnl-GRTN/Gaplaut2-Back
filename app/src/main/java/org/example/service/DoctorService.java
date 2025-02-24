@@ -2,6 +2,7 @@ package org.example.service;
 
 import org.example.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,8 +16,13 @@ public class DoctorService {
     @Autowired
     private DoctorRepository doctorRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public void create(Doctor p){
-        doctorRepository.save(p); //Implemented by JpaRepository
+        // Encode the password before saving
+        p.setPassword(passwordEncoder.encode(p.getPassword()));
+        doctorRepository.save(p);
     }
 
     public Iterable<Doctor> readAll(){

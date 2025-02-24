@@ -5,8 +5,10 @@ package org.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@ComponentScan(basePackages = {"org.example"}) // scan all packages (to find PasswordEncoder in org.example.basic.config.SecurityConfig)
 public class App {
     public String getGreeting() {
         return "Hello World!";
