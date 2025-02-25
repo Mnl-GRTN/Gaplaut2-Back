@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -83,6 +84,25 @@ public class DoctorRestController {
         else{
             throw new RuntimeException("Vous n'avez pas les droits pour effectuer cette action");
         }
+    }
+
+    @DeleteMapping(path = "/private/api/doctor/{id}")
+    public void delete(@PathVariable("id") int id){
+        // Get the roles of the current user
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+        List<String> userRoles = authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
+
+        // Get the roles of the doctor to be deleted
+        List<String> deleteRoles = service.readOne(id).getRoles().stream().map(Role::getRoleName).collect(Collectors.toList());
+
+        if(deleteRoles.contains("superadmin") && userRoles.contains("ROLE_superadmin")){
+            service.delete(id);
+        }
+        else{
+            throw new RuntimeException("Vous n'avez pas les droits pour effectuer cette action");
+        }
+
     }
 
 

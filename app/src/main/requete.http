@@ -126,6 +126,14 @@ Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
     
 }
 
+###
+DELETE http://localhost:8080/private/api/doctor/3
+Content-Type: application/json
+# superadmin:superadmin
+Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
+# admin:admin
+#Authorization: Basic YWRtaW46YWRtaW4=
+
 ### Doctor Admin
 POST http://localhost:8080/public/api/doctors
 Content-Type: application/json

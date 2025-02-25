@@ -52,6 +52,10 @@ public class DoctorService {
         doctorRepository.save(existingDoctor);
     }
 
+    public void delete(int id){
+        doctorRepository.deleteById(id);
+    }
+
     @PostConstruct
     public void init(){
 
