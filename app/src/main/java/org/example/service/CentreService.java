@@ -24,6 +24,11 @@ public class CentreService {
         return centreRepository.findById(id).get();
     }
 
+    public void update(int id, Centre c){
+        c.setId(id);
+        centreRepository.save(c);
+    }
+
     @PostConstruct
     public void init(){
 
