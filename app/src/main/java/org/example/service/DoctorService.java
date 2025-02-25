@@ -37,6 +37,21 @@ public class DoctorService {
         return doctorRepository.findById(id).get();
     }
 
+    public void update(int id, Doctor d){
+        // Check if the doctor exists
+        Doctor existingDoctor = doctorRepository.findById(id).orElseThrow(() -> new RuntimeException("Doctor not found"));
+
+        // Update the doctor details with the new details
+        existingDoctor.setCentre(d.getCentre());
+        existingDoctor.setFirstName(d.getFirstName());
+        existingDoctor.setLastName(d.getLastName());
+        existingDoctor.setRoles(d.getRoles());
+        existingDoctor.setEmail(d.getEmail());
+        existingDoctor.setPassword(passwordEncoder.encode(d.getPassword()));
+
+        doctorRepository.save(existingDoctor);
+    }
+
     @PostConstruct
     public void init(){
 

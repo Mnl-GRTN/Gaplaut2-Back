@@ -1,45 +1,12 @@
 POST http://localhost:8080/private/api/centres
 Content-Type: application/json
-Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
-
-
-{
-    "centreName": "El Grando Centrissimo Cinque",
-    "city": "City 5",
-    "address": "5 rue de la 5ème ville",
-    "postalCode": "55555"
-}
-
-###
-PUT http://localhost:8080/private/api/centre/5
-Content-Type: application/json
-Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
+# superadmin:superadmin
+Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
+# admin:admin
+#Authorization: Basic YWRtaW46YWRtaW4=
 
 {
-    "centreName": "El Grando Centrissimo Cinque",
-    "city": "City 1",
-    "address": "1 rue de la 5ème ville",
-    "postalCode": "55555"
-}
-
-###
-POST http://localhost:8080/public/api/centres
-Content-Type: application/json
-
-{
-    "centreName": "Centre de la vie",
-    "city": "City Kratos",
-    "address": "Rue de la vie",
-    "postalCode": "00000"
-}
-
-###
-
-POST http://localhost:8080/public/api/centres
-Content-Type: application/json
-
-{
-    "centreName": "Centre 1",
+    "centreName": "El Grando Centrissimo Uno",
     "city": "City 1",
     "address": "1 rue de la 1ère ville",
     "postalCode": "11111"
@@ -47,28 +14,44 @@ Content-Type: application/json
 
 
 ###
+PUT http://localhost:8080/private/api/centre/5
+Content-Type: application/json
+# superadmin:superadmin
+Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
+# admin:admin
+#Authorization: Basic YWRtaW46YWRtaW4=
+
+{
+    "centreName": "El Grando Centrissimo Cinque",
+    "city": "City test",
+    "address": "1 rue de la 5ème ville",
+    "postalCode": "55555"
+}
+
+
+###
 GET http://localhost:8080/public/api/centres
+
 
 ###
 GET http://localhost:8080/public/api/centre/2
 
+
+
 ###
-POST http://localhost:8080/api/doctors
+GET http://localhost:8080/private/api/doctors
 Content-Type: application/json
+# superadmin:superadmin
+Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
 
-{
-    "lastName": "Nataf",
-    "firstName": "David",
-    "centre": {
-        "id": 1
-    }
-}
 
 ###
-GET http://localhost:8080/api/doctors
+GET http://localhost:8080/private/api/doctor/2
+Content-Type: application/json
+# superadmin:superadmin
+Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
 
-###
-GET http://localhost:8080/api/doctor/2
+
 
 ### Vaccination
     # private String mail;
@@ -78,7 +61,8 @@ GET http://localhost:8080/api/doctor/2
     # private LocalDateTime date;
 ###
 
-POST http://localhost:8080/api/vaccinations
+
+POST http://localhost:8080/public/api/vaccinations
 Content-Type: application/json
 
 {
@@ -90,8 +74,11 @@ Content-Type: application/json
     "date": "2021-12-12T12:12:12"
 }
 
+
+
+
 ###public Doctor(Integer id, String lastName ,String firstName, Centre centre, String email, String password, List<Role> roles)
-POST http://localhost:8080/public/api/doctors
+POST http://localhost:8080/private/api/doctors
 Content-Type: application/json
 Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
 
@@ -102,6 +89,32 @@ Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
         "id": 1
     },
     "email": "superadmin2",
+    "password": "superadmin",
+    "roles": [
+        {
+            "id": 1,
+            "roleName": "superadmin"
+        }
+    ]
+
+    
+}
+
+###
+PUT http://localhost:8080/private/api/doctor/2
+Content-Type: application/json
+# superadmin:superadmin
+Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
+# admin:admin
+#Authorization: Basic YWRtaW46YWRtaW4=
+
+{
+    "lastName": "update",
+    "firstName": "update",
+    "centre": {
+        "id": 1
+    },
+    "email": "superadmin",
     "password": "superadmin",
     "roles": [
         {
