@@ -1,10 +1,24 @@
-POST http://localhost:8080/public/api/centres
+POST http://localhost:8080/private/api/centres
 Content-Type: application/json
+Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
+
 
 {
     "centreName": "El Grando Centrissimo Cinque",
     "city": "City 5",
     "address": "5 rue de la 5ème ville",
+    "postalCode": "55555"
+}
+
+###
+PUT http://localhost:8080/private/api/centre/5
+Content-Type: application/json
+Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
+
+{
+    "centreName": "El Grando Centrissimo Cinque",
+    "city": "City 1",
+    "address": "1 rue de la 5ème ville",
     "postalCode": "55555"
 }
 
@@ -79,18 +93,20 @@ Content-Type: application/json
 ###public Doctor(Integer id, String lastName ,String firstName, Centre centre, String email, String password, List<Role> roles)
 POST http://localhost:8080/public/api/doctors
 Content-Type: application/json
+Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
 
 {
-    "lastName": "superadmin",
+    "lastName": "test superadmin",
     "firstName": "superadmin",
     "centre": {
         "id": 1
     },
-    "email": "superadmin",
+    "email": "superadmin2",
     "password": "superadmin",
     "roles": [
         {
-            "id": 1
+            "id": 1,
+            "roleName": "superadmin"
         }
     ]
 
@@ -100,18 +116,20 @@ Content-Type: application/json
 ### Doctor Admin
 POST http://localhost:8080/public/api/doctors
 Content-Type: application/json
+Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
 
 {
     "lastName": "admin",
     "firstName": "admin",
     "centre": {
-        "id": 1
+        "id": 3
     },
     "email": "admin",
     "password": "admin",
     "roles": [
         {
-            "id": 2
+            "id": 2,
+            "roleName": "admin"
         }
     ]
 
@@ -158,6 +176,8 @@ Authorization: Basic bcOpZGVjaW46bcOpZGVjaW4=
 GET http://localhost:8080/private/api/roles
 Content-Type: application/json
 Authorization: Basic marchepas
+
+
 
 ### Get Authenticated User Info (The role of the user superadmin:superadmin is displayed)
 GET http://localhost:8080/private/api/auth/user-info

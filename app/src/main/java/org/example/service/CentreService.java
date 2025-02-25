@@ -25,8 +25,16 @@ public class CentreService {
     }
 
     public void update(int id, Centre c){
-        c.setId(id);
-        centreRepository.save(c);
+        // Check if the centre exists
+        Centre existingCentre = centreRepository.findById(id).orElseThrow(() -> new RuntimeException("Centre not found"));
+
+        // Update the centre details with the new details
+        existingCentre.setCentreName(c.getCentreName());
+        existingCentre.setCity(c.getCity());
+        existingCentre.setAddress(c.getAddress());
+        existingCentre.setPostalCode(c.getPostalCode());
+
+        centreRepository.save(existingCentre);
     }
 
     @PostConstruct
