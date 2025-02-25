@@ -53,28 +53,6 @@ Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
 
 
 
-### Vaccination
-    # private String mail;
-    # private String phoneNumber;
-    # private String last_name;
-    # private String first_name;
-    # private LocalDateTime date;
-###
-
-
-POST http://localhost:8080/public/api/vaccinations
-Content-Type: application/json
-
-{
-    
-    "mail": "gagou@gmail.com",
-    "phoneNumber": "0606060606",
-    "last_name": "Gagou",
-    "first_name": "Gagou",
-    "date": "2021-12-12T12:12:12"
-}
-
-
 
 
 ###public Doctor(Integer id, String lastName ,String firstName, Centre centre, String email, String password, List<Role> roles)
@@ -241,6 +219,7 @@ Authorization: Basic marchepas
 
 
 
+
 ### Get Authenticated User Info (The role of the user superadmin:superadmin is displayed)
 GET http://localhost:8080/private/api/auth/user-info
 Content-Type: application/json
@@ -256,3 +235,24 @@ GET http://localhost:8080/private/api/auth/user-info
 Content-Type: application/json
 Authorization: Basic bcOpZGVjaW46bcOpZGVjaW4=
 
+
+
+
+
+
+
+###
+POST http://localhost:8080/public/api/vaccinations
+Content-Type: application/json
+
+{
+    "centre": {
+        "id":"1" 
+    },
+    "isVaccined": "false",
+    "mail": "gagou@gmail.com",
+    "phoneNumber": "0606060606",
+    "lastName": "Gagou",
+    "firstName": "Gagou",
+    "date": "2021-12-12"
+}
