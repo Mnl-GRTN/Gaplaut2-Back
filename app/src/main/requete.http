@@ -135,7 +135,7 @@ Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
 #Authorization: Basic YWRtaW46YWRtaW4=
 
 ### Doctor Admin
-POST http://localhost:8080/public/api/doctors
+POST http://localhost:8080/private/api/doctors
 Content-Type: application/json
 Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
 
@@ -152,14 +152,16 @@ Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
             "id": 2,
             "roleName": "admin"
         }
-    ]
-
-    
+    ] 
 }
 
 ### Doctor
-POST http://localhost:8080/public/api/doctors
+POST http://localhost:8080/private/api/doctors
 Content-Type: application/json
+# superadmin:superadmin
+#Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
+# admin:admin
+Authorization: Basic YWRtaW46YWRtaW4=
 
 {
     "lastName": "médecin",
@@ -167,16 +169,55 @@ Content-Type: application/json
     "centre": {
         "id": 1
     },
-    "email": "médecin",
+    "email": "medecin",
     "password": "médecin",
     "roles": [
         {
-            "id": 3
+            "id": 3,
+            "roleName": "médecin"
         }
     ]
-
-    
 }
+
+###
+PUT http://localhost:8080/private/api/doctor/9
+Content-Type: application/json
+# superadmin:superadmin
+#Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
+# admin:admin
+Authorization: Basic YWRtaW46YWRtaW4=
+
+{
+    "lastName": "medecin",
+    "firstName": "médecin",
+    "centre": {
+        "id": 1
+    },
+    "email": "medecin",
+    "password": "médecin",
+    "roles": [
+        {
+            "id": 3,
+            "roleName": "médecin"
+        }
+    ]
+}
+
+###
+DELETE http://localhost:8080/private/api/doctor/8
+Content-Type: application/json
+# superadmin:superadmin
+#Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
+# admin:admin
+Authorization: Basic YWRtaW46YWRtaW4=
+
+
+
+
+
+
+
+
 
 ### Basic Auth superadmin:superadmin
 GET http://localhost:8080/private/api/roles
