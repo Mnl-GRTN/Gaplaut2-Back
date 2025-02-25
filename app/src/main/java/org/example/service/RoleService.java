@@ -35,7 +35,7 @@ public class RoleService {
         if (roleRepository.count() == 0) {
             Role role = new Role(1,"superadmin");
             Role role2 = new Role(2, "admin");
-            Role role3 = new Role(3,"médecin");
+            Role role3 = new Role(3,"doctor");
     
             roleRepository.save(role);
             roleRepository.save(role2);
