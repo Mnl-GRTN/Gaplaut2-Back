@@ -24,7 +24,7 @@ public class DoctorServiceTest {
     @Test
     public void testDoctorCreation() {
         var centre = Mockito.mock(Centre.class);        
-        var doctor = new Doctor(1, "Dupont", "Jean", centre);
+        var doctor = new Doctor(1, "Dupont", "Jean", centre, "jean.d@email.com", "password", null);
 
         Mockito.when(doctorRepository.findById(1)).thenReturn(Optional.of(doctor));
 

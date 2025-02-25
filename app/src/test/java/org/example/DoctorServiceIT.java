@@ -21,7 +21,7 @@ public class DoctorServiceIT {
     @Test
     public void ITDoctorCreation() {
         var centre = Mockito.mock(Centre.class);        
-        var doctor = new Doctor(1, "Dupont", "Jean", centre);
+        var doctor = new Doctor(1, "Dupont", "Jean", centre, "jean.d@email.com", "password", null);
 
         this.doctorRepository.save(doctor);
 
