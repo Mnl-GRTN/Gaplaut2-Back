@@ -1,7 +1,7 @@
-package org.example.rest;
+package org.example.controller;
 
-import org.example.service.Centre;
-import org.example.service.CentreService;
+import org.example.service.Role;
+import org.example.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,23 +12,23 @@ import org.springframework.web.bind.annotation.RestController;
 import java.net.URISyntaxException;
 
 @RestController
-public class CentreRestController {
+public class RoleRestController {
     
     @Autowired
-    private CentreService service;
+    private RoleService service;
 
-    @PostMapping(path = "/api/centres")
-    public void create(@RequestBody Centre c) throws URISyntaxException{
-        service.create(c);
+    @PostMapping(path = "/api/roles")
+    public void create(@RequestBody Role r) throws URISyntaxException{
+        service.create(r);
     }
 
-    @GetMapping(path = "/api/centres")
-    public Iterable<Centre> read(){
+    @GetMapping(path = "private/api/roles")
+    public Iterable<Role> read(){
         return service.readAll();
     }
 
-    @GetMapping(path = "/api/centre/{id}")
-    public Centre readOne(@PathVariable("id") int id){
+    @GetMapping(path = "/api/role/{id}")
+    public Role readOne(@PathVariable("id") int id){
         return service.readOne(id);
     }
 

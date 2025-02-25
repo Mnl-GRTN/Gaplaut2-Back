@@ -1,4 +1,4 @@
-package org.example.rest;
+package org.example.controller;
 
 import org.example.service.Vaccination;
 import org.example.service.VaccinationService;
@@ -21,12 +21,12 @@ public class VaccinationRestController {
     @Autowired
     private VaccinationService service;
 
-    @PostMapping(path = "/api/vaccinations")
+    @PostMapping(path = "public/api/vaccinations")
     public void create(@RequestBody Vaccination p) throws URISyntaxException{
         service.create(p);
     }
 
-    @GetMapping(path = "/api/vaccinations")
+    @GetMapping(path = "public/api/vaccinations")
     public Iterable<Vaccination> read(){
         return service.readAll();
     }

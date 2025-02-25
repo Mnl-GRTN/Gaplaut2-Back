@@ -1,8 +1,13 @@
 package org.example.service;
 
+import java.util.Collections;
+
 import org.example.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import jakarta.annotation.PostConstruct;
 
 @Service
 public class DoctorService {
@@ -19,8 +24,13 @@ public class DoctorService {
         this.doctorRepository = doctorRepository;
     }
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public void create(Doctor p){
-        doctorRepository.save(p); //Implemented by JpaRepository
+        // Encode the password before saving
+        p.setPassword(passwordEncoder.encode(p.getPassword()));
+        doctorRepository.save(p);
     }
 
     public Iterable<Doctor> readAll(){
@@ -29,6 +39,23 @@ public class DoctorService {
 
     public Doctor readOne(int id){
         return doctorRepository.findById(id).get();
+    }
+
+    @PostConstruct
+    public void init(){
+
+        Role role = new Role(1,"superadmin");
+        Centre centre = new Centre(1, "Centre" + 1, "City1", "Address" + 1, "12345");
+
+        if (doctorRepository.count() == 0) {
+            Doctor superadmin = new Doctor(1,  "superadmin" ,"superadmin", 
+                                            centre, "superadmin", "superadmin",
+                                            Collections.singleton(role));
+    
+            superadmin.setPassword(passwordEncoder.encode(superadmin.getPassword()));
+            doctorRepository.save(superadmin);
+            
+        }
     }
 
 }
