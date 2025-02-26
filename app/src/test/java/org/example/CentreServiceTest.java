@@ -11,7 +11,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-
 public class CentreServiceTest {
 
     CentreService centreService;
@@ -21,8 +20,6 @@ public class CentreServiceTest {
     @BeforeEach
     void setUp() {
         centreRepository = Mockito.mock(CentreRepository.class);
-
-        
         centreService = new CentreService(centreRepository);
     }
     
@@ -39,8 +36,6 @@ public class CentreServiceTest {
 
         var result = centreService.readOne(1);
 
-        Assertions.assertThat(result.isEqualTo(centre));
-        
-    
+        Assertions.assertThat(result.isEqualTo(centre));    
     }
 }

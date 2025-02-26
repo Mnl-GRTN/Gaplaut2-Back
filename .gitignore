@@ -18,3 +18,5 @@ app/build.gradle
 app/src/main/resources/application.yaml
 .DS_Store
 
+# Ignore http requests
+*.http
