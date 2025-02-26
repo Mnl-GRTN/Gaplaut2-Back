@@ -93,7 +93,4 @@ public class VaccinationRestController {
         throw new RuntimeException("Vous n'avez pas les droits pour effectuer cette action");
     }
 
-
-
-
 }
