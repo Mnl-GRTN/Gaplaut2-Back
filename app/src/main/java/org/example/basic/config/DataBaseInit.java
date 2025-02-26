@@ -12,7 +12,6 @@ import org.example.service.Doctor;
 import org.example.service.Role;
 import org.example.service.Vaccination;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
