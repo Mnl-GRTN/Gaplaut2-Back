@@ -20,12 +20,12 @@ public class Vaccination {
 
     @ManyToOne
     @JoinColumn(name = "centre_id", referencedColumnName = "id")
-    private Centre Centre;
+    private Centre centre;
 
     private String mail;
     private String phoneNumber;
-    private String last_name;
-    private String first_name;
+    private String lastName;
+    private String firstName;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate date; // Changer en LocalDateTime quand on aura des heures de vaccinations
@@ -38,10 +38,10 @@ public class Vaccination {
         this.id = id;
     }
     public Centre getCentre() {
-        return Centre;
+        return centre;
     }
     public void setCentre(Centre centre) {
-        Centre = centre;
+        this.centre = centre;
     }
     public String getMail() {
         return mail;
@@ -55,17 +55,17 @@ public class Vaccination {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLast_name(String lastName) {
+        this.lastName = lastName;
     }
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirst_name(String firstName) {
+        this.firstName = firstName;
     }
     public LocalDate getDate() {
         return date;
@@ -78,6 +78,19 @@ public class Vaccination {
     }
     public void setIsVaccined(Boolean isVaccined) {
         this.isVaccined = isVaccined;
+    }
+
+    public Vaccination() {
+    }
+
+    public Vaccination(Centre centre, String mail, String phoneNumber, String lastName, String firstName, LocalDate date) {
+        this.centre = centre;
+        this.mail = mail;
+        this.phoneNumber = phoneNumber;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.date = date;
+        this.isVaccined = false;
     }
 
     
