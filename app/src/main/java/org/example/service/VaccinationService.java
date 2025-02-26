@@ -22,4 +22,14 @@ public class VaccinationService {
         return vaccinationRepository.findById(id).get();
     }
 
+    public void validateVaccination(int id){
+        if(!vaccinationRepository.existsById(id)){
+            throw new IllegalArgumentException("Vaccination with id " + id + " does not exist.");
+        }
+
+        Vaccination vaccination = vaccinationRepository.findById(id).get();
+        vaccination.setIsVaccined(true);
+        vaccinationRepository.save(vaccination);
+    }
+
 }

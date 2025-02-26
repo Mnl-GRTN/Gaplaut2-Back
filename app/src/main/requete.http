@@ -247,7 +247,7 @@ Content-Type: application/json
 
 {
     "centre": {
-        "id":"1" 
+        "id":"2" 
     },
     "isVaccined": "false",
     "mail": "gagou@gmail.com",
@@ -256,3 +256,14 @@ Content-Type: application/json
     "firstName": "Gagou",
     "date": "2021-12-12"
 }
+
+
+###
+PUT http://localhost:8080/private/api/vaccination/validation/9
+Content-Type: application/json
+# superadmin:superadmin
+Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
+# admin:admin
+#Authorization: Basic YWRtaW46YWRtaW4=
+
+
