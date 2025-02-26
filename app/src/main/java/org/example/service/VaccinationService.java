@@ -1,5 +1,7 @@
 package org.example.service;
 
+import java.time.LocalDate;
+
 import org.example.repository.VaccinationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +32,11 @@ public class VaccinationService {
         Vaccination vaccination = vaccinationRepository.findById(id).get();
         vaccination.setIsVaccined(true);
         vaccinationRepository.save(vaccination);
+    }
+
+    public Iterable<Vaccination> readCentreDate(int centreId, LocalDate date){
+        
+        return vaccinationRepository.findByCentre_IdAndDate(centreId, date);
     }
 
 }

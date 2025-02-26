@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -68,6 +69,27 @@ public class VaccinationRestController {
             }
         }
 
+        throw new RuntimeException("Vous n'avez pas les droits pour effectuer cette action");
+    }
+
+    @GetMapping(path = "/private/api/vaccinations/{centreId}/{date}")
+    public Iterable<Vaccination> readDateCentre(@PathVariable("centreId") int centreId, @PathVariable("date") LocalDate date){
+
+        // Get the roles of the current user
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+        List<String> userRoles = authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
+
+        // Check if the user is a doctor or an admin
+        if (userRoles.contains("ROLE_doctor") || userRoles.contains("ROLE_admin")){
+            
+            // Check if the user is from the centre of the vaccination
+            Integer userCentreId = doctorRepository.findByEmail(authentication.getName()).get().getCentre().getId();
+
+            if (centreId == userCentreId){
+                return service.readCentreDate(centreId, date);
+            }
+        }
         throw new RuntimeException("Vous n'avez pas les droits pour effectuer cette action");
     }
 
