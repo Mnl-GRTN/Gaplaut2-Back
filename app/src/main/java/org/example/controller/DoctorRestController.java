@@ -51,6 +51,7 @@ public class DoctorRestController {
         // Check if the user has the superadmin role
         if (userRoles.contains("ROLE_superadmin")){
             service.create(d);
+            return;
         }
 
         // Check if the user has the admin role, and the doctor to be updated is not an admin or superadmin
@@ -63,17 +64,12 @@ public class DoctorRestController {
             Integer doctorCentre = d.getCentre().getId();
             if (adminCentre == doctorCentre){
                 service.create(d);
-            }
-            else{
-                throw new RuntimeException("Vous n'avez pas les droits pour effectuer cette action");
+                return;
             }
         }
 
-        else{
-            throw new RuntimeException("Vous n'avez pas les droits pour effectuer cette action");
-        }
- 
-        
+        throw new RuntimeException("Vous n'avez pas les droits pour effectuer cette action");
+
     }
 
     @GetMapping(path = "/private/api/doctors")
@@ -99,6 +95,7 @@ public class DoctorRestController {
         // Check if the user has the superadmin role
         if (userRoles.contains("ROLE_superadmin")){
             service.update(id, d);
+            return;
         }
 
         // Check if the user has the admin role, and the doctor to be updated is not an admin or superadmin
@@ -111,16 +108,12 @@ public class DoctorRestController {
             Integer doctorCentre = doctorRepository.findById(id).get().getCentre().getId();
             if (adminCentre == doctorCentre){
                 service.update(id,d);
-            }
-            else{
-                throw new RuntimeException("Vous n'avez pas les droits pour effectuer cette action");
+                return;
             }
         }
 
-
-        else{
-            throw new RuntimeException("Vous n'avez pas les droits pour effectuer cette action");
-        }
+        throw new RuntimeException("Vous n'avez pas les droits pour effectuer cette action");
+        
     }
 
     @DeleteMapping(path = "/private/api/doctor/{id}")
@@ -136,6 +129,7 @@ public class DoctorRestController {
         // Check if the user has the superadmin role
         if(userRoles.contains("ROLE_superadmin")){
             service.delete(id);
+            return;
         }
 
         // Check if the user has the admin role, and the doctor to be updated is not an admin or superadmin
@@ -148,17 +142,11 @@ public class DoctorRestController {
             Integer doctorCentre = service.readOne(id).getCentre().getId();
             if (adminCentre == doctorCentre){
                 service.delete(id);
-            }
-            else{
-                throw new RuntimeException("Vous n'avez pas les droits pour effectuer cette action");
+                return;
             }
         }
-
-        else{
-            throw new RuntimeException("Vous n'avez pas les droits pour effectuer cette action");
-        }
-
+        
+        throw new RuntimeException("Vous n'avez pas les droits pour effectuer cette action");
+        
     }
-
-
 }
