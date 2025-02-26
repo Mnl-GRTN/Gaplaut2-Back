@@ -1,17 +1,12 @@
 package org.example;
 
-import java.util.Optional;
-
 import org.example.service.Centre;
 import org.example.service.CentreService;
 import org.example.repository.CentreRepository;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest

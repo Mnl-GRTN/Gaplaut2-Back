@@ -3,11 +3,7 @@ package org.example;
 import java.util.Optional;
 
 import org.assertj.core.api.Assertions;
-import org.example.repository.DoctorRepository;
 import org.example.repository.RoleRepository;
-import org.example.service.Centre;
-import org.example.service.Doctor;
-import org.example.service.DoctorService;
 import org.example.service.Role;
 import org.example.service.RoleService;
 import org.junit.jupiter.api.BeforeEach;

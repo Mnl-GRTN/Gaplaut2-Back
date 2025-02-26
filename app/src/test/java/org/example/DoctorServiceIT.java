@@ -1,10 +1,8 @@
 package org.example;
 
 import org.assertj.core.api.Assertions;
-import org.example.repository.CentreRepository;
 import org.example.repository.DoctorRepository;
 import org.example.service.Centre;
-import org.example.service.CentreService;
 import org.example.service.Doctor;
 import org.example.service.DoctorService;
 import org.junit.jupiter.api.Test;
