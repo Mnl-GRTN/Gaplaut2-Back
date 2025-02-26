@@ -20,7 +20,7 @@ public class Vaccination {
 
     @ManyToOne
     @JoinColumn(name = "centre_id", referencedColumnName = "id")
-    private Centre Centre;
+    private Centre centre;
 
     private String mail;
     private String phoneNumber;
@@ -38,10 +38,10 @@ public class Vaccination {
         this.id = id;
     }
     public Centre getCentre() {
-        return Centre;
+        return centre;
     }
     public void setCentre(Centre centre) {
-        Centre = centre;
+        this.centre = centre;
     }
     public String getMail() {
         return mail;
