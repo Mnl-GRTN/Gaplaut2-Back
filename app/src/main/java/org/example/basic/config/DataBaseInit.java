@@ -1,14 +1,18 @@
 package org.example.basic.config;
 
+import java.time.LocalDate;
 import java.util.Collections;
 
 import org.example.repository.CentreRepository;
 import org.example.repository.DoctorRepository;
 import org.example.repository.RoleRepository;
+import org.example.repository.VaccinationRepository;
 import org.example.service.Centre;
 import org.example.service.Doctor;
 import org.example.service.Role;
+import org.example.service.Vaccination;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -28,6 +32,9 @@ public class DataBaseInit {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private VaccinationRepository vaccinationRepository;
 
     @PostConstruct
     public void init() {
@@ -92,6 +99,20 @@ public class DataBaseInit {
                 Collections.singleton(role3));
             doctor2.setPassword(passwordEncoder.encode(doctor2.getPassword()));
             doctorRepository.save(doctor2);
+        }
+
+        if(vaccinationRepository.count() == 0) {
+            LocalDate date = LocalDate.of(2021, 12, 12);
+            LocalDate date2 = LocalDate.of(2021, 12, 13);
+            Vaccination vaccination = new Vaccination(centre1, "john.doe@gmail.com", "0606060606", "Doe", "John", date);
+            Vaccination vaccination2 = new Vaccination(centre1, "jane.doe@gmail.com", "0707070707", "Doe", "Jane", date);
+            Vaccination vaccination3 = new Vaccination(centre2, "jean.dupont@gmail.com", "0808080808", "Dupont", "Jean", date);
+            Vaccination vaccination4 = new Vaccination(centre2, "pierre.paul@gmail.com", "0909090909", "Paul", "Pierre", date2);
+
+            vaccinationRepository.save(vaccination);
+            vaccinationRepository.save(vaccination2);
+            vaccinationRepository.save(vaccination3);
+            vaccinationRepository.save(vaccination4);
         }
     }
 }

@@ -80,5 +80,18 @@ public class Vaccination {
         this.isVaccined = isVaccined;
     }
 
+    public Vaccination() {
+    }
+
+    public Vaccination(Centre centre, String mail, String phoneNumber, String lastName, String firstName, LocalDate date) {
+        this.centre = centre;
+        this.mail = mail;
+        this.phoneNumber = phoneNumber;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.date = date;
+        this.isVaccined = false;
+    }
+
     
 }
