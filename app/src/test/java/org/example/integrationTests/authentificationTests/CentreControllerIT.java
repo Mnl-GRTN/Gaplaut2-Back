@@ -1,4 +1,4 @@
-package org.example.basic.config;
+package org.example.integrationTests.authentificationTests;
 
 import org.example.service.Centre;
 
