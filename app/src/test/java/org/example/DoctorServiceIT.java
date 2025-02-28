@@ -23,7 +23,7 @@ public class DoctorServiceIT {
 
     @Test
     public void ITDoctorCreation() {
-        var centre = Mockito.mock(Centre.class);        
+        var centre = new Centre(1, "Centre test", "Paris", "1 rue jean jaures", "75000");        
         var doctor = new Doctor(1, "Dupont", "Jean", centre, "jean.d@email.com", "password", null);
 
         this.doctorRepository.save(doctor);
