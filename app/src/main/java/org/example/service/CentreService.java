@@ -21,14 +21,11 @@ public class CentreService {
     public Iterable<Centre> readAll(){
         List<Centre> centres = centreRepository.findAll();
 
+        // Remove the first centre (id = 1) from the list because its the superadmin's centre
         centres = StreamSupport.stream(centres.spliterator(), false)
         .filter(obj -> obj.getId() != 1)
         .collect(Collectors.toList());
 
-        
-        
-        
-        
         return centres;
     }
 
