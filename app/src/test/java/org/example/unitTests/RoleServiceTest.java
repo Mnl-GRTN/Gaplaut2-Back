@@ -28,7 +28,7 @@ public class RoleServiceTest {
 
     @Test
     public void testRoleCreation() {
-        var role = new Role(1, "ROLE_ADMIN");    
+        var role = new Role(1, "superadmin");    
         Mockito.when(roleRepository.findById(1)).thenReturn(Optional.of(role));
         
         var result = roleService.readOne(1);

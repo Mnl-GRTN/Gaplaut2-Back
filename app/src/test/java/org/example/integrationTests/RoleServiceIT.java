@@ -21,7 +21,7 @@ public class RoleServiceIT {
 
     @Test
     public void ITRoleCreation() {
-        var role = new Role(1, "ROLE_ADMIN");    
+        var role = new Role(1, "superadmin");    
         this.roleRepository.save(role);    
 
         var result = roleService.readOne(1);
