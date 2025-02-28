@@ -1,5 +1,9 @@
 package org.example.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
 import org.example.repository.CentreRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +22,14 @@ public class CentreService {
     }
 
     public Iterable<Centre> readAll(){
-        return centreRepository.findAll();
+        List<Centre> centres = centreRepository.findAll();
+
+        // Remove the first centre (id = 1) from the list because its the superadmin's centre
+        centres = StreamSupport.stream(centres.spliterator(), false)
+        .filter(obj -> obj.getId() != 1)
+        .collect(Collectors.toList());
+
+        return centres;
     }
 
     public Centre readOne(int id){

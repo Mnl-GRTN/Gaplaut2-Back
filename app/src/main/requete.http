@@ -166,7 +166,7 @@ Authorization: Basic bcOpZGVjaW46bcOpZGVjaW4=
 
 
 ###
-GET http://localhost:8080/private/api/doctors/centre/1
+GET http://localhost:8080/private/api/doctors/centre/2
 Content-Type: application/json
 # superadmin:superadmin
 # Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
