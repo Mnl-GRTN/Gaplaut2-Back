@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Transient;
 import jakarta.persistence.ManyToMany;
 
 import java.util.Set;
@@ -37,6 +38,9 @@ public class Doctor {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles; 
+
+    @Transient // This field is not persisted in the database
+    private boolean passwordChanged; // Flag to indicate if the password was changed
 
     public Doctor(){}
 
@@ -107,5 +111,13 @@ public class Doctor {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public boolean isPasswordChanged() {
+        return passwordChanged;
+    }
+
+    public void setPasswordChanged(boolean passwordChanged) {
+        this.passwordChanged = passwordChanged;
     }
 }

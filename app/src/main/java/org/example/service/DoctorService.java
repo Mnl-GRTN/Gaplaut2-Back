@@ -4,6 +4,8 @@ import org.example.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Service
 public class DoctorService {
@@ -16,6 +18,9 @@ public class DoctorService {
     @Autowired
     private DoctorRepository doctorRepository;
 
+
+    private static final Logger logger = LoggerFactory.getLogger(DoctorService.class);
+    
     public DoctorService(DoctorRepository doctorRepository) {
         this.doctorRepository = doctorRepository;
     }
@@ -37,21 +42,27 @@ public class DoctorService {
         return doctorRepository.findById(id).get();
     }
 
-    public void update(int id, Doctor d){
-        // Check if the doctor exists
-        Doctor existingDoctor = doctorRepository.findById(id).orElseThrow(() -> new RuntimeException("Doctor not found"));
+    public void update(int id, Doctor updatedDoctor) {
+        Doctor existingDoctor = doctorRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Doctor not found"));
 
-        // Update the doctor details with the new details
-        existingDoctor.setCentre(d.getCentre());
-        existingDoctor.setFirstName(d.getFirstName());
-        existingDoctor.setLastName(d.getLastName());
-        existingDoctor.setRoles(d.getRoles());
-        existingDoctor.setEmail(d.getEmail());
-        existingDoctor.setPassword(passwordEncoder.encode(d.getPassword()));
+        logger.info("Password changed: {}", updatedDoctor.isPasswordChanged());
+
+        // Update fields
+        existingDoctor.setFirstName(updatedDoctor.getFirstName());
+        existingDoctor.setLastName(updatedDoctor.getLastName());
+        existingDoctor.setEmail(updatedDoctor.getEmail());
+        existingDoctor.setCentre(updatedDoctor.getCentre());
+        existingDoctor.setRoles(updatedDoctor.getRoles());
+
+        // Only hash the password if it was changed
+        if (updatedDoctor.isPasswordChanged()) {
+            existingDoctor.setPassword(passwordEncoder.encode(updatedDoctor.getPassword()));
+        }
 
         doctorRepository.save(existingDoctor);
     }
-
+    
     public void delete(int id){
         doctorRepository.deleteById(id);
     }
