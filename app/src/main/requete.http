@@ -22,10 +22,12 @@ Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
 #Authorization: Basic YWRtaW46YWRtaW4=
 
 {
-    "centreName": "El Grando Centrissimo Cinque",
+    "id": 5,
+    "postalCode": "55555",
+    "centreName": "El Grando Cinque",
     "city": "City test",
-    "address": "1 rue de la 5ème ville",
-    "postalCode": "55555"
+    "address": "1 rue de la 5ème ville"
+    
 }
 
 
