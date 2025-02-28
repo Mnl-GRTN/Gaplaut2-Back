@@ -16,6 +16,10 @@ public class DoctorService {
     @Autowired
     private DoctorRepository doctorRepository;
 
+    public DoctorService(DoctorRepository doctorRepository) {
+        this.doctorRepository = doctorRepository;
+    }
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 

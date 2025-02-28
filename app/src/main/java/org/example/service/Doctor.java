@@ -82,6 +82,9 @@ public class Doctor {
         this.centre = centre;
     }
 
+    public boolean isEqualTo(Doctor d){
+        return this.id == d.id && this.centre.isEqualTo(d.centre) && this.firstName == d.firstName && this.lastName == d.lastName && this.email == d.email && this.password == d.password;
+    }
     public String getEmail() {
         return email;
     }

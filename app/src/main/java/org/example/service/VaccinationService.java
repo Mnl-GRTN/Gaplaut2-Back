@@ -12,6 +12,10 @@ public class VaccinationService {
     @Autowired
     private VaccinationRepository vaccinationRepository;
 
+    public VaccinationService(VaccinationRepository vaccinationRepository) {
+        this.vaccinationRepository = vaccinationRepository;
+    }
+
     public void create(Vaccination p){
         vaccinationRepository.save(p); //Implemented by JpaRepository
     }

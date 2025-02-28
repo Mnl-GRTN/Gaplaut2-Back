@@ -65,5 +65,8 @@ public class Centre {
     public void setAddress(String address) {
         this.address = address;
     }
-    
+
+    public boolean isEqualTo(Centre c){
+        return this.id == c.id && this.centreName == c.centreName && this.city == c.city && this.address == c.address && this.postalCode == c.postalCode;
+    }
 }
