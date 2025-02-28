@@ -1,5 +1,9 @@
-POST http://localhost:8080/api/centres
+POST http://localhost:8080/private/api/centres
 Content-Type: application/json
+# superadmin:superadmin
+Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
+# admin:admin
+#Authorization: Basic YWRtaW46YWRtaW4=
 
 {
     "centreName": "El Grando Centrissimo Cinque",
@@ -9,7 +13,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:8080/api/centres
+POST http://localhost:8080/public/api/centres
 Content-Type: application/json
 
 {
@@ -20,55 +24,38 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8080/api/centres
+
+POST http://localhost:8080/public/api/centres
+Content-Type: application/json
+
+{
+    "centreName": "Centre 1",
+    "city": "City 1",
+    "address": "1 rue de la 1ère ville",
+    "postalCode": "11111"
+}
+
 
 ###
-GET http://localhost:8080/api/centre/2
+GET http://localhost:8080/public/api/centres
 
-
-
+###
+GET http://localhost:8080/public/api/centre/2
 
 ###
 POST http://localhost:8080/api/doctors
 Content-Type: application/json
+# superadmin:superadmin
+Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
 
-{
-    "lastName": "Garattoni",
-    "firstName": "Manoel",
-    "centre": {
-        "id": 1
-    }
-}
 
 ###
-
-POST http://localhost:8080/api/doctors
+GET http://localhost:8080/private/api/doctor/2
 Content-Type: application/json
+# superadmin:superadmin
+Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
 
-{
-    "lastName": "Nataf",
-    "firstName": "David",
-    "centre": {
-        "id": 1
-    }
-}
 
-###
-GET http://localhost:8080/api/doctors
-
-###
-GET http://localhost:8080/api/doctor/2
-
-### Vaccination
-    # private String mail;
-    # private String phoneNumber;
-    # private String last_name;
-    # private String first_name;
-    # private LocalDateTime date;
-###
-
-POST http://localhost:8080/api/vaccinations
-Content-Type: application/json
 
 {
     
@@ -79,3 +66,109 @@ Content-Type: application/json
     "date": "2021-12-12T12:12:12"
 }
 
+###public Doctor(Integer id, String lastName ,String firstName, Centre centre, String email, String password, List<Role> roles)
+POST http://localhost:8080/public/api/doctors
+Content-Type: application/json
+
+{
+    "lastName": "superadmin",
+    "firstName": "superadmin",
+    "centre": {
+        "id": 1
+    },
+    "email": "superadmin",
+    "password": "superadmin",
+    "roles": [
+        {
+            "id": 1
+        }
+    ]
+
+    
+}
+
+### Doctor Admin
+POST http://localhost:8080/public/api/doctors
+Content-Type: application/json
+
+{
+    "lastName": "admin",
+    "firstName": "admin",
+    "centre": {
+        "id": 1
+    },
+    "email": "admin",
+    "password": "admin",
+    "roles": [
+        {
+            "id": 2
+        }
+    ]
+
+    
+}
+
+### Doctor
+POST http://localhost:8080/public/api/doctors
+Content-Type: application/json
+
+{
+    "lastName": "médecin",
+    "firstName": "médecin",
+    "centre": {
+        "id": 1
+    },
+    "email": "médecin",
+    "password": "médecin",
+    "roles": [
+        {
+            "id": 3
+        }
+    ]
+
+    
+}
+
+### Basic Auth superadmin:superadmin
+GET http://localhost:8080/private/api/roles
+Content-Type: application/json
+Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
+
+### Basic Auth request with admin:admin
+GET http://localhost:8080/private/api/roles
+Content-Type: application/json
+Authorization: Basic YWRtaW46YWRtaW4=
+
+### Basic Auth request with médecin:médecin
+GET http://localhost:8080/private/api/roles
+Content-Type: application/json
+Authorization: Basic bcOpZGVjaW46bcOpZGVjaW4=
+
+### Basic Auth request with false credentials
+GET http://localhost:8080/private/api/roles
+Content-Type: application/json
+Authorization: Basic marchepas
+
+### Get Authenticated User Info (The role of the user superadmin:superadmin is displayed)
+GET http://localhost:8080/private/api/auth/user-info
+Content-Type: application/json
+Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
+
+### Get Authenticated User Info (The role of the user admin:admin is displayed)
+GET http://localhost:8080/private/api/auth/user-info
+Content-Type: application/json
+Authorization: Basic YWRtaW46YWRtaW4=
+
+### Get Authenticated User Info (The role of the user médecin:médecin is displayed)
+GET http://localhost:8080/private/api/auth/user-info
+Content-Type: application/json
+Authorization: Basic bcOpZGVjaW46bcOpZGVjaW4=
+
+
+###
+GET http://localhost:8080/private/api/doctors/centre/1
+Content-Type: application/json
+# superadmin:superadmin
+# Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
+# admin:admin
+Authorization: Basic YWRtaW46YWRtaW4=

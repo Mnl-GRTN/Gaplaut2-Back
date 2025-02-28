@@ -3,8 +3,6 @@ package org.example.service;
 import org.example.repository.CentreRepository;
 import org.springframework.stereotype.Service;
 
-import jakarta.annotation.PostConstruct;
-
 @Service
 public class CentreService {
 
@@ -27,14 +25,16 @@ public class CentreService {
         return centreRepository.findById(id).get();
     }
 
-    @PostConstruct
-    public void init(){
+    public void update(int id, Centre c){
+        // Check if the centre exists
+        Centre existingCentre = centreRepository.findById(id).orElseThrow(() -> new RuntimeException("Centre not found"));
 
-        if (centreRepository.count() == 0) {
-            for (int i = 1; i <= 20; i++) {
-                Centre centre = new Centre(i, "Centre" + i, "City1", "Address" + i, "12345");
-                centreRepository.save(centre);
-            }
-        }
+        // Update the centre details with the new details
+        existingCentre.setCentreName(c.getCentreName());
+        existingCentre.setCity(c.getCity());
+        existingCentre.setAddress(c.getAddress());
+        existingCentre.setPostalCode(c.getPostalCode());
+
+        centreRepository.save(existingCentre);
     }
 }
