@@ -67,6 +67,6 @@ public class Centre {
     }
 
     public boolean isEqualTo(Centre c){
-        return this.id == c.id && this.centreName.equals(c.centreName) && this.city.equals(c.city);
+        return this.id == c.id && this.centreName == c.centreName && this.city == c.city && this.address == c.address && this.postalCode == c.postalCode;
     }
 }

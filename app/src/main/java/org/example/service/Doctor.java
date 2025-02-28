@@ -83,7 +83,7 @@ public class Doctor {
     }
 
     public boolean isEqualTo(Doctor d){
-        return this.id == d.id && this.centre.equals(d.centre) && this.firstName.equals(d.firstName) && this.lastName.equals(d.lastName);
+        return this.id == d.id && this.centre.isEqualTo(d.centre) && this.firstName == d.firstName && this.lastName == d.lastName && this.email == d.email && this.password == d.password;
     }
     public String getEmail() {
         return email;

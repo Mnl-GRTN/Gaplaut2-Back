@@ -92,7 +92,7 @@ public class Vaccination {
         this.isVaccined = false;
     }
     public boolean isEqualTo(Vaccination v) {
-        return this.id == v.id && this.Centre == v.Centre && this.mail.equals(v.mail) && this.phoneNumber.equals(v.phoneNumber) && this.last_name.equals(v.last_name) && this.first_name.equals(v.first_name) && this.date.equals(v.date) && this.isVaccined == v.isVaccined;
+        return this.id == v.id && this.centre.isEqualTo(v.centre) && this.mail == v.mail && this.phoneNumber == v.phoneNumber && this.lastName == v.lastName && this.firstName == v.firstName && this.date == v.date && this.isVaccined == v.isVaccined;
     }
     
 }

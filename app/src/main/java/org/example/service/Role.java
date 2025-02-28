@@ -44,7 +44,7 @@ public class Role {
     }
 
     public boolean isEqualTo(Role role) {
-        return this.id == role.getId() && this.roleName.equals(role.getRoleName());
+        return this.id == role.id && this.roleName == role.roleName;
     }
 
 }
