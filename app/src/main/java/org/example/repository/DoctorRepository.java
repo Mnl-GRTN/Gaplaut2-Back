@@ -14,4 +14,6 @@ public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
 
     //Optional is a container object which may or may not contain a non-null value.
     Optional<Doctor> findByEmail(String email);
+
+    Iterable<Doctor> findByCentre_Id(Integer centreId);
 }

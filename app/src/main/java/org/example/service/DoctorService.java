@@ -51,4 +51,8 @@ public class DoctorService {
     public void delete(int id){
         doctorRepository.deleteById(id);
     }
+
+    public Iterable<Doctor> readByCentre_Id(int centreId){
+        return doctorRepository.findByCentre_Id(centreId);
+    }
 }

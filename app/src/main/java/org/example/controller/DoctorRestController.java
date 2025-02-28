@@ -144,9 +144,33 @@ public class DoctorRestController {
                 service.delete(id);
                 return;
             }
-        }
-        
+        }   
         throw new RuntimeException("Vous n'avez pas les droits pour effectuer cette action");
-        
+    }
+
+    @GetMapping(path = "/private/api/doctors/centre/{centreId}")
+    public Iterable<Doctor> readCentre(@PathVariable("centreId") int centreId){
+
+        // Get the roles of the current user
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+        List<String> userRoles = authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
+
+        Iterable<Doctor> doctors = service.readByCentre_Id(centreId);
+
+        if (userRoles.contains("ROLE_superadmin")){
+            return doctors;
+        }
+
+        Integer adminCentre = doctorRepository.findByEmail(authentication.getName()).get().getCentre().getId();
+
+        // Check if the user has the admin role, and the doctor to be fetched are in the same center as the admin
+        if (userRoles.contains("ROLE_admin") && adminCentre == centreId){
+            //remove admin doctors from the list
+            doctors = ((Collection<Doctor>) doctors).stream().filter(d -> !d.getRoles().stream().map(Role::getRoleName).collect(Collectors.toList()).contains("admin")).collect(Collectors.toList());
+            return doctors;
+        }
+
+        throw new RuntimeException("Vous n'avez pas les droits pour effectuer cette action");
     }
 }
