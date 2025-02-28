@@ -1,9 +1,12 @@
-package org.example;
+package org.example.integrationTests;
 
 import org.example.repository.DoctorRepository;
 import org.example.service.Centre;
 import org.example.service.Doctor;
 import org.example.service.DoctorService;
+import org.example.service.Role;
+
+import java.util.Collections;
 
 import org.assertj.core.api.Assertions;
 
@@ -22,8 +25,10 @@ public class DoctorServiceIT {
 
     @Test
     public void ITDoctorCreation() {
-        var centre = new Centre(1, "Centre test", "Paris", "1 rue jean jaures", "75000");        
-        var doctor = new Doctor(1, "Dupont", "Jean", centre, "jean.d@email.com", "password", null);
+        Centre centre1 = new Centre(1, "Centre Administration", "PARIS", "4 rue de la santé", "75000");
+        var role1 = new Role(1, "superadmin");
+        Doctor doctor = new Doctor(1, "superadmin", "superadmin",centre1, "superadmin", "superadmin",
+                Collections.singleton(role1));
 
         this.doctorRepository.save(doctor);
 

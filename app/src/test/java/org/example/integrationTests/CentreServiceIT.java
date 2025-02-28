@@ -1,4 +1,4 @@
-package org.example;
+package org.example.integrationTests;
 
 import org.example.service.Centre;
 import org.example.service.CentreService;
@@ -23,7 +23,7 @@ public class CentreServiceIT {
     @Test
     public void ITCenterCreation() {
 
-        var centre = new Centre(1, "Centre 1", "City 1", "1 rue jean jaures", "75000");
+        var centre = new Centre(1, "Centre test", "City 1", "1 rue jean jaures", "75000");
 
         this.centreRepository.save(centre);
 
