@@ -1,4 +1,4 @@
-package org.example;
+package org.example.unitTests;
 
 import org.example.repository.VaccinationRepository;
 import org.example.service.Centre;

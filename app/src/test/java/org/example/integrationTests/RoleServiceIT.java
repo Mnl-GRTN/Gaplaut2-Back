@@ -1,4 +1,4 @@
-package org.example;
+package org.example.integrationTests;
 
 import org.assertj.core.api.Assertions;
 

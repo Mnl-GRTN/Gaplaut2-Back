@@ -1,4 +1,4 @@
-package org.example;
+package org.example.integrationTests;
 
 import org.example.repository.DoctorRepository;
 import org.example.service.Centre;
