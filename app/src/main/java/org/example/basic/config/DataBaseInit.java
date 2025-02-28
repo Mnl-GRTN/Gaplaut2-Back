@@ -73,7 +73,7 @@ public class DataBaseInit {
         if (doctorRepository.count() == 0) {
 
             // Create superadmin
-            Doctor superadmin = new Doctor(1, "superadmin", "superadmin", centre1, "superadmin", "superadmin",
+            Doctor superadmin = new Doctor(1, "superadmin", "superadmin", null, "superadmin", "superadmin",
                 Collections.singleton(role1));
             superadmin.setPassword(passwordEncoder.encode(superadmin.getPassword()));
             doctorRepository.save(superadmin);
