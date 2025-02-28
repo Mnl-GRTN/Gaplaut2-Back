@@ -1,16 +1,21 @@
 package org.example;
 
-import java.util.Optional;
-
 import org.example.service.Centre;
 import org.example.service.CentreService;
 import org.example.repository.CentreRepository;
 
+import java.util.Optional;
+
 import org.assertj.core.api.Assertions;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import org.mockito.Mockito;
 
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
 public class CentreServiceTest {
 
     CentreService centreService;
@@ -26,12 +31,8 @@ public class CentreServiceTest {
     @Test
     public void testCenterCreation() {
 
-        var centre = new Centre();
+        var centre = new Centre(1, "Centre 1", "City 1", "1 rue jean jaures", "75000");
 
-        centre.setId(1);
-        centre.setCentreName("Centre 1");
-        centre.setCity("City 1");
-        
         Mockito.when(centreRepository.findById(1)).thenReturn(Optional.of(centre));
 
         var result = centreService.readOne(1);

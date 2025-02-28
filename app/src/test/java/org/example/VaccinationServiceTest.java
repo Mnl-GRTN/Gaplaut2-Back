@@ -1,17 +1,23 @@
 package org.example;
 
-import java.time.LocalDate;
-import java.util.Optional;
-
-import org.assertj.core.api.Assertions;
 import org.example.repository.VaccinationRepository;
 import org.example.service.Centre;
 import org.example.service.Vaccination;
 import org.example.service.VaccinationService;
+
+import java.time.LocalDate;
+import java.util.Optional;
+
+import org.assertj.core.api.Assertions;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import org.mockito.Mockito;
 
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
 public class VaccinationServiceTest {
     
     VaccinationService vaccinationService;

@@ -5,7 +5,9 @@ import org.example.service.CentreService;
 import org.example.repository.CentreRepository;
 
 import org.assertj.core.api.Assertions;
+
 import org.junit.jupiter.api.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -21,18 +23,12 @@ public class CentreServiceIT {
     @Test
     public void ITCenterCreation() {
 
-        var centre = new Centre();
-
-        centre.setId(1);
-        centre.setCentreName("Centre 1");
-        centre.setCity("City 1");
+        var centre = new Centre(1, "Centre 1", "City 1", "1 rue jean jaures", "75000");
 
         this.centreRepository.save(centre);
 
         var result = centreService.readOne(1);
 
         Assertions.assertThat(result.isEqualTo(centre));
-        
-    
     }
 }

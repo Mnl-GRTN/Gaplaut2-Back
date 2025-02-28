@@ -1,15 +1,21 @@
 package org.example;
 
-import java.util.Optional;
-
-import org.assertj.core.api.Assertions;
 import org.example.repository.RoleRepository;
 import org.example.service.Role;
 import org.example.service.RoleService;
+
+import java.util.Optional;
+
+import org.assertj.core.api.Assertions;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import org.mockito.Mockito;
 
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
 public class RoleServiceTest {
     RoleService roleService;
     RoleRepository roleRepository;

@@ -1,16 +1,22 @@
 package org.example;
 
-import java.util.Optional;
-
 import org.example.service.Centre;
 import org.example.service.Doctor;
 import org.example.service.DoctorService;
 import org.example.repository.DoctorRepository;
+
+import java.util.Optional;
+
 import org.assertj.core.api.Assertions;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import org.mockito.Mockito;
 
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
 public class DoctorServiceTest {
     DoctorService doctorService;
     DoctorRepository doctorRepository;
