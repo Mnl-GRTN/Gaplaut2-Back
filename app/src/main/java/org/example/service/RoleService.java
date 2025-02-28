@@ -16,6 +16,10 @@ public class RoleService {
     @Autowired
     private RoleRepository roleRepository;
 
+    public RoleService(RoleRepository roleRepository) {
+        this.roleRepository = roleRepository;
+    }
+    
     public void create(Role role){
         roleRepository.save(role); //Implemented by JpaRepository
     }

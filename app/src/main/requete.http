@@ -6,7 +6,30 @@ Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
 #Authorization: Basic YWRtaW46YWRtaW4=
 
 {
-    "centreName": "El Grando Centrissimo Uno",
+    "centreName": "El Grando Centrissimo Cinque",
+    "city": "City 5",
+    "address": "5 rue de la 5ème ville",
+    "postalCode": "55555"
+}
+
+###
+POST http://localhost:8080/public/api/centres
+Content-Type: application/json
+
+{
+    "centreName": "Centre de la vie",
+    "city": "City Kratos",
+    "address": "Rue de la vie",
+    "postalCode": "00000"
+}
+
+###
+
+POST http://localhost:8080/public/api/centres
+Content-Type: application/json
+
+{
+    "centreName": "Centre 1",
     "city": "City 1",
     "address": "1 rue de la 1ère ville",
     "postalCode": "11111"
@@ -14,34 +37,13 @@ Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
 
 
 ###
-PUT http://localhost:8080/private/api/centre/5
-Content-Type: application/json
-# superadmin:superadmin
-Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
-# admin:admin
-#Authorization: Basic YWRtaW46YWRtaW4=
-
-{
-    "id": 5,
-    "postalCode": "55555",
-    "centreName": "El Grando Cinque",
-    "city": "City test",
-    "address": "1 rue de la 5ème ville"
-    
-}
-
-
-###
 GET http://localhost:8080/public/api/centres
-
 
 ###
 GET http://localhost:8080/public/api/centre/2
 
-
-
 ###
-GET http://localhost:8080/private/api/doctors
+POST http://localhost:8080/api/doctors
 Content-Type: application/json
 # superadmin:superadmin
 Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
@@ -55,149 +57,77 @@ Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
 
 
 
-
+{
+    
+    "mail": "gagou@gmail.com",
+    "phoneNumber": "0606060606",
+    "last_name": "Gagou",
+    "first_name": "Gagou",
+    "date": "2021-12-12T12:12:12"
+}
 
 ###public Doctor(Integer id, String lastName ,String firstName, Centre centre, String email, String password, List<Role> roles)
-POST http://localhost:8080/private/api/doctors
+POST http://localhost:8080/public/api/doctors
 Content-Type: application/json
-Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
 
 {
-    "lastName": "test superadmin",
+    "lastName": "superadmin",
     "firstName": "superadmin",
     "centre": {
         "id": 1
     },
-    "email": "superadmin2",
+    "email": "superadmin",
     "password": "superadmin",
     "roles": [
         {
-            "id": 1,
-            "roleName": "superadmin"
+            "id": 1
         }
     ]
 
     
 }
-
-###
-PUT http://localhost:8080/private/api/doctor/2
-Content-Type: application/json
-# superadmin:superadmin
-Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
-# admin:admin
-#Authorization: Basic YWRtaW46YWRtaW4=
-
-{
-    "lastName": "update",
-    "firstName": "update",
-    "centre": {
-        "id": 1
-    },
-    "email": "superadmin3",
-    "password": "superadmin",
-    "roles": [
-        {
-            "id": 1,
-            "roleName": "superadmin"
-        }
-    ]
-
-    
-}
-
-###
-DELETE http://localhost:8080/private/api/doctor/3
-Content-Type: application/json
-# superadmin:superadmin
-Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
-# admin:admin
-#Authorization: Basic YWRtaW46YWRtaW4=
 
 ### Doctor Admin
-POST http://localhost:8080/private/api/doctors
+POST http://localhost:8080/public/api/doctors
 Content-Type: application/json
-Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu
 
 {
     "lastName": "admin",
     "firstName": "admin",
     "centre": {
-        "id": 3
+        "id": 1
     },
     "email": "admin",
     "password": "admin",
     "roles": [
         {
-            "id": 2,
-            "roleName": "admin"
+            "id": 2
         }
-    ] 
+    ]
+
+    
 }
 
 ### Doctor
-POST http://localhost:8080/private/api/doctors
+POST http://localhost:8080/public/api/doctors
 Content-Type: application/json
-# superadmin:superadmin
-#Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
-# admin:admin
-Authorization: Basic YWRtaW46YWRtaW4=
 
 {
     "lastName": "médecin",
     "firstName": "médecin",
     "centre": {
-        "id": 3
+        "id": 1
     },
-    "email": "medecin",
+    "email": "médecin",
     "password": "médecin",
     "roles": [
         {
-            "id": 3,
-            "roleName": "médecin"
+            "id": 3
         }
     ]
+
+    
 }
-
-###
-PUT http://localhost:8080/private/api/doctor/9
-Content-Type: application/json
-# superadmin:superadmin
-Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
-# admin:admin
-#Authorization: Basic YWRtaW46YWRtaW4=
-
-{
-    "lastName": "medecin",
-    "firstName": "médecin",
-    "centre": {
-        "id": 3
-    },
-    "email": "medecin",
-    "password": "médecin",
-    "roles": [
-        {
-            "id": 3,
-            "roleName": "médecin"
-        }
-    ]
-}
-
-###
-DELETE http://localhost:8080/private/api/doctor/9
-Content-Type: application/json
-# superadmin:superadmin
-#Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
-# admin:admin
-Authorization: Basic YWRtaW46YWRtaW4=
-
-
-
-
-
-
-
-
 
 ### Basic Auth superadmin:superadmin
 GET http://localhost:8080/private/api/roles
@@ -209,18 +139,15 @@ GET http://localhost:8080/private/api/roles
 Content-Type: application/json
 Authorization: Basic YWRtaW46YWRtaW4=
 
-### Basic Auth request with doctor:doctor
+### Basic Auth request with médecin:médecin
 GET http://localhost:8080/private/api/roles
 Content-Type: application/json
-Authorization: Basic ZG9jdG9yOmRvY3Rvcg==
+Authorization: Basic bcOpZGVjaW46bcOpZGVjaW4=
 
 ### Basic Auth request with false credentials
 GET http://localhost:8080/private/api/roles
 Content-Type: application/json
 Authorization: Basic marchepas
-
-
-
 
 ### Get Authenticated User Info (The role of the user superadmin:superadmin is displayed)
 GET http://localhost:8080/private/api/auth/user-info
@@ -232,51 +159,10 @@ GET http://localhost:8080/private/api/auth/user-info
 Content-Type: application/json
 Authorization: Basic YWRtaW46YWRtaW4=
 
-### Get Authenticated User Info (The role of the user doctor:doctor is displayed)
+### Get Authenticated User Info (The role of the user médecin:médecin is displayed)
 GET http://localhost:8080/private/api/auth/user-info
 Content-Type: application/json
-Authorization: Basic ZG9jdG9yOmRvY3Rvcg==
-
-
-
-
-
-
-
-###
-POST http://localhost:8080/public/api/vaccinations
-Content-Type: application/json
-
-{
-    "centre": {
-        "id":"2" 
-    },
-    "isVaccined": "false",
-    "mail": "gagou@gmail.com",
-    "phoneNumber": "0606060606",
-    "lastName": "Gagou",
-    "firstName": "Gagou",
-    "date": "2021-12-12"
-}
-
-
-###
-PUT http://localhost:8080/private/api/vaccination/validation/1
-Content-Type: application/json
-# superadmin:superadmin
-Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
-# admin:admin
-#Authorization: Basic YWRtaW46YWRtaW4=
-
-
-###
-GET http://localhost:8080/private/api/vaccinations/1/2021-12-12
-Content-Type: application/json
-# superadmin:superadmin
-#Authorization: Basic c3VwZXJhZG1pbjpzdXBlcmFkbWlu 
-# admin:admin
-Authorization: Basic YWRtaW46YWRtaW4=
-
+Authorization: Basic bcOpZGVjaW46bcOpZGVjaW4=
 
 
 ###
