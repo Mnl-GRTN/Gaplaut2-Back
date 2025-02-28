@@ -1,13 +1,22 @@
 package org.example;
 
 import org.assertj.core.api.Assertions;
+
 import org.example.repository.RoleRepository;
 import org.example.service.Role;
 import org.example.service.RoleService;
+
 import org.junit.jupiter.api.Test;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
 public class RoleServiceIT {
+    @Autowired
     RoleService roleService;
+
+    @Autowired
     RoleRepository roleRepository;
 
     @Test

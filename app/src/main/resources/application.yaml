@@ -1,8 +1,9 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/gaplaut2
+    url: jdbc:postgresql://localhost:5432/test
     username: postgres
     password: password
+    driver-class-name: org.postgresql.Driver
   
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
