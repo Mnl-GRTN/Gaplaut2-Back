@@ -17,17 +17,17 @@ public class RoleRestController {
     @Autowired
     private RoleService service;
 
-    @PostMapping(path = "/api/roles")
+    @PostMapping(path = "/private/api/roles")
     public void create(@RequestBody Role r) throws URISyntaxException{
         service.create(r);
     }
 
-    @GetMapping(path = "private/api/roles")
+    @GetMapping(path = "/private/api/roles")
     public Iterable<Role> read(){
         return service.readAll();
     }
 
-    @GetMapping(path = "/api/role/{id}")
+    @GetMapping(path = "/private/api/role/{id}")
     public Role readOne(@PathVariable("id") int id){
         return service.readOne(id);
     }
