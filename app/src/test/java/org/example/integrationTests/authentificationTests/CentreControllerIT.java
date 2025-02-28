@@ -21,7 +21,7 @@ public class CentreControllerIT {
     private final String URL = "/private/api/centres";
 
     @Test
-    public void testCreateCentreAvecSuperadmin() {
+    public void testCreateCenterAsSuperAdmin() {
         Centre centre = new Centre(9595, "El Grando Centrissimo Cinque", "City 5", "5 rue de la 5ème ville", "55555");
         TestRestTemplate authRestTemplate = restTemplate.withBasicAuth("superadmin", "superadmin");
 
@@ -31,7 +31,7 @@ public class CentreControllerIT {
     }
 
     @Test
-    public void testAccesRefusePourRandom() {
+    public void testCreateCenterAsFakeUser() {
         Centre centre = new Centre(909090, "Centre Interdit", "City X", "Adresse X", "99999");
 
         TestRestTemplate authRestTemplate = restTemplate.withBasicAuth("randomUser", "randomPasswordOfTheUser");
@@ -42,7 +42,7 @@ public class CentreControllerIT {
     }
 
     @Test
-    public void testAccesSansAuthentification() {
+    public void testCreateCenterOfDifferentCenter() {
         Centre centre = new Centre(111211, "Centre Public", "City Y", "Adresse Y", "11111");
 
         ResponseEntity<String> response = restTemplate.postForEntity(URL, centre, String.class);
