@@ -1,6 +1,34 @@
 # Gaplaut2 
 
-Gaplaut2 is a web application for managing a fleet of medical centers. Its backend is developed with Java Spring Boot and a PostgreSQL database. The frontend is developed with Angular.
+Gaplaut2 is a web application for managing a fleet of medical centers. 
+Here you can find its backend developed with Java Spring Boot and a PostgreSQL database.
+
+## Installation
+
+### Requirements
+
+- Git
+- Java 
+- Gradle
+- PostgreSQL (make sure the server is running)
+
+### Run the application
+
+1. Clone the repository
+```bash
+git clone https://github.com/Mnl-GRTN/Gaplaut2-Back.git
+cd Gaplaut2-Back
+```
+2. Change the properties in the `application.yaml` file to match your database configuration
+
+3. Change the properties in the `build.gradle` file to match your Gradle/Java configuration
+
+4. Run the application
+```bash
+gradle run
+```
+
+5. The application should be running on `http://localhost:8080`
 
 
 ## Database schema
@@ -8,30 +36,39 @@ Gaplaut2 is a web application for managing a fleet of medical centers. Its backe
 Here is the database schema of the application based on the instructions given in the subject. (see images below)
     
 
-#### Center
-    - ID
-    - Name
-    - Address
-    - ZipCode
-    - City
+### Center
+    - id
+    - name
+    - address
+    - zipCode
+    - city
 
-#### User
-    - ID
-    - Role
-    - Lastname
-    - Firstname
-    - Email
-    - Password
-    - CenterId
+### Doctor
+    - id
+    - lastName
+    - firstName
+    - email
+    - password
+    - centerId
 
-#### Booking
-    - ID
-    - Lastname
-    - Firstname
-    - Email
-    - Date
-    - CenterId
-    - IsVaccinated
+### Booking
+    - id
+    - lastName
+    - firstName
+    - email
+    - phoneNumber
+    - date
+    - centerId
+    - isVaccinated
+
+### Role
+    - id
+    - name
+
+### Role_Doctor
+    - roleId
+    - doctorId
+
 
 ## Instructions of the assignment
 
